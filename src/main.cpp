@@ -10,31 +10,39 @@
 #include "tree.h"
 
 int main() {
-    std::vector<char> init = { '1', '2', '3' };
+    std::vector<char> init = {'1', '2', '3'};
     PMTree example(init);
 
-    auto variants = getAllPerms(example);
-    for (auto& seq : variants) {
-        for (char c : seq) std::cout << c;
+    std::vector<std::vector<char>> variants = getAllPerms(example);
+    for (const auto& seq : variants) {
+        for (char c : seq) {
+            std::cout << c;
+        }
         std::cout << "  ";
     }
     std::cout << "\n\n";
 
     std::cout << "getPerm1(1): ";
-    auto first = getPerm1(example, 1);
-    for (char c : first) std::cout << c;
+    std::vector<char> first = getPerm1(example, 1);
+    for (char c : first) {
+        std::cout << c;
+    }
     std::cout << std::endl;
 
     std::cout << "getPerm2(2): ";
-    auto second = getPerm2(example, 2);
-    for (char c : second) std::cout << c;
+    std::vector<char> second = getPerm2(example, 2);
+    for (char c : second) {
+        std::cout << c;
+    }
     std::cout << "\n\n";
 
     std::cout << "n;getAllPerms(s);getPerm1(s);getPerm2(s)" << std::endl;
 
     for (int n = 3; n <= 8; ++n) {
         std::vector<char> letters;
-        for (int i = 0; i < n; ++i) letters.push_back('a' + i);
+        for (int i = 0; i < n; ++i) {
+            letters.push_back('a' + i);
+        }
         PMTree tree(letters);
 
         std::mt19937 gen(42);
