@@ -1,4 +1,3 @@
-// Copyright 2022 NNTU-CS
 #ifndef INCLUDE_TREE_H_
 #define INCLUDE_TREE_H_
 
@@ -28,4 +27,5 @@ std::vector<char> getPerm1(PMTree& obj, int pos);
 std::vector<char> getPerm2(PMTree& obj, int pos);
 
 size_t fact(int n);
+
 #endif  // INCLUDE_TREE_H_
