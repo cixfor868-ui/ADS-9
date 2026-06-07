@@ -29,11 +29,11 @@ PMTree::Node* PMTree::generate(const std::vector<char>& rest) {
     if (rest.empty()) {
         return new Node(0);
     }
-    
+
     Node* cur = new Node(0);
     std::vector<char> sorted_rest = rest;
     std::sort(sorted_rest.begin(), sorted_rest.end());
-    
+
     for (char ch : sorted_rest) {
         std::vector<char> leftover = sorted_rest;
         auto it = std::find(leftover.begin(), leftover.end(), ch);
@@ -44,7 +44,7 @@ PMTree::Node* PMTree::generate(const std::vector<char>& rest) {
         child->sym = ch;
         cur->links.push_back(child);
     }
-    
+
     return cur;
 }
 
@@ -75,13 +75,13 @@ std::vector<std::vector<char>> getAllPerms(PMTree& obj) {
     std::vector<std::vector<char>> out;
     std::vector<char> track;
     int total = static_cast<int>(obj.base.size());
-    
+
     for (PMTree::Node* first : obj.top->links) {
         track.push_back(first->sym);
         traverse(first, track, out, 1, total);
         track.pop_back();
     }
-    
+
     return out;
 }
 
@@ -115,14 +115,14 @@ std::vector<char> getPerm2(PMTree& obj, int pos) {
         size_t block = fact(total - step - 1);
         int idx = remainder / static_cast<int>(block);
         remainder %= static_cast<int>(block);
-        
+
         if (idx >= static_cast<int>(current->links.size())) {
             return {};
         }
-        
+
         current = current->links[idx];
         result.push_back(current->sym);
     }
-    
+
     return result;
 }
